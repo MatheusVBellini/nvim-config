@@ -21,11 +21,19 @@ vim.opt.rtp:prepend(lazypath)
 
 -- plugins
 local plugins = {
-  {"blazkowolf/gruber-darker.nvim"}, -- gruber-darker colorstheme
+  { "blazkowolf/gruber-darker.nvim" }, -- gruber-darker colorstheme
+
+  { 'nvim-telescope/telescope.nvim', tag = '0.1.5', -- file finder
+    dependencies = { 'nvim-lua/plenary.nvim' } },
+
 }
 local opts = {}
 
 require("lazy").setup(plugins, opts)
+
+-- [[ telescope setup ]]
+local builtin = require("telescope.builtin")
+--vim.keymap.set('n', '<C-p>', builtin.find_files(), {})
 
 -- [[ colorscheme setup ]]
 vim.cmd.colorscheme "gruber-darker"
