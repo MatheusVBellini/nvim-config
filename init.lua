@@ -1,12 +1,3 @@
--- [[ tabs are 2 spaces long ]]
-vim.cmd("set expandtab");
-vim.cmd("set tabstop=2");
-vim.cmd("set softtabstop=2");
-vim.cmd("set shiftwidth=2");
-
-vim.g.mapleader = " " -- space is leader symbol
-vim.o.mouse = 'a' -- mouse reporting for all modes
-
 -- [[ lazy.nvim package manager ]]
 -- callable with :Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -68,6 +59,18 @@ configs.setup({
   highlight = { enable = true },
   indent = { enable = true },  
 })
+
+-- [[ general configs ]]
+vim.cmd("set expandtab"); -- tabs are 2 spaces
+vim.cmd("set tabstop=2");
+vim.cmd("set softtabstop=2");
+vim.cmd("set shiftwidth=2");
+
+vim.g.mapleader = " " -- space is leader symbol
+vim.o.mouse = 'a' -- mouse reporting for all modes
+
+vim.opt.number = true        -- Enables line numbers
+vim.opt.relativenumber = true -- Sets line numbers to be relative
 
 -- [[ general macros ]]
 vim.keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true }) -- save
