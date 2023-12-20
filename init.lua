@@ -4,8 +4,8 @@ vim.cmd("set tabstop=2");
 vim.cmd("set softtabstop=2");
 vim.cmd("set shiftwidth=2");
 
--- [[ leader key for macros ]]
-vim.g.mapleader = " "
+vim.g.mapleader = " " -- space is leader symbol
+vim.o.mouse = 'a' -- mouse reporting for all modes
 
 -- [[ lazy.nvim package manager ]]
 -- callable with :Lazy
@@ -32,6 +32,14 @@ local plugins = {
   { "nvim-telescope/telescope-file-browser.nvim", -- file browser
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
 
+  { "nvim-neo-tree/neo-tree.nvim", -- file tree
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", 
+      "MunifTanjim/nui.nvim",
+    } },
+
   {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}, -- tree syntax identifier
 
 }
@@ -48,6 +56,9 @@ vim.keymap.set('n', '<leader>ff', builtin_ff.find_files, {}) -- open file search
 vim.keymap.set('n', '<leader>fg', builtin_ff.live_grep, {}) -- open live-grep on files
 vim.keymap.set('n', '<leader>fb', builtin_fb.file_browser, {}) -- open file browser
 
+-- [[ neotree setup ]]
+vim.keymap.set('n', '<leader>ft', ':Neotree filesystem toggle left<CR>', {})
+
 -- [[ treesitter setup ]]
 -- https://github.com/nvim-treesitter/nvim-treesitter
 local languages = {"lua", "vim", "python", "c", "cpp"}
@@ -61,6 +72,15 @@ configs.setup({
 -- [[ general macros ]]
 vim.keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true }) -- save
 vim.keymap.set('n', '<leader>fq', ':q<CR>', { noremap = true, silent = true }) -- save and quit
+
+vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, silent = true }) -- split window horizontally
+vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, silent = true }) -- split window vertically
+
+vim.api.nvim_set_keymap('n', '<leader>w<Right>', '<C-w>l', { noremap = true, silent = true }) -- move right
+vim.keymap.set('n', '<leader>w<Left>', '<C-w>h', { noremap = true, silent = true }) -- move left
+vim.keymap.set('n', '<leader>w<Up>', '<C-w>k', { noremap = true, silent = true }) -- move up
+vim.keymap.set('n', '<leader>w<Down>', '<C-w>j', { noremap = true, silent = true }) -- move down
+
 
 -- [[ colorscheme setup ]]
 vim.cmd.colorscheme "gruber-darker"
