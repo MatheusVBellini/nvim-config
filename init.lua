@@ -26,8 +26,10 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   { "blazkowolf/gruber-darker.nvim" }, -- gruber-darker colorstheme
 
-  { 'nvim-telescope/telescope.nvim', tag = '0.1.5', -- file finder
+  { 'nvim-telescope/telescope.nvim', tag = '0.1.5', -- file explorer
     dependencies = { 'nvim-lua/plenary.nvim' } },
+
+  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}, -- tree syntax identifier
 
 }
 local opts = {}
@@ -35,13 +37,24 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 -- [[ telescope setup ]]
+-- https://github.com/nvim-telescope/telescope.nvim
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- open telescope
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) -- open live-grep on files
 
+-- [[ treesitter setup ]]
+-- https://github.com/nvim-treesitter/nvim-treesitter
+local languages = {"lua", "vim", "python", "c", "cpp"}
+local configs = require("nvim-treesitter.configs")
+configs.setup({
+  ensure_installed = languages,
+  highlight = { enable = true },
+  indent = { enable = true },  
+})
+
 -- [[ general macros ]]
 vim.keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true }) -- save
-vim.keymap.set('n', '<leader>fq', ':wq<CR>', { noremap = true, silent = true }) -- save and quit
+vim.keymap.set('n', '<leader>fq', ':q<CR>', { noremap = true, silent = true }) -- save and quit
 
 -- [[ colorscheme setup ]]
 vim.cmd.colorscheme "gruber-darker"
