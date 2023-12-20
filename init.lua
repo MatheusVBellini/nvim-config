@@ -26,8 +26,11 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   { "blazkowolf/gruber-darker.nvim" }, -- gruber-darker colorstheme
 
-  { 'nvim-telescope/telescope.nvim', tag = '0.1.5', -- file explorer
+  { 'nvim-telescope/telescope.nvim', tag = '0.1.5', -- file finder
     dependencies = { 'nvim-lua/plenary.nvim' } },
+
+  { "nvim-telescope/telescope-file-browser.nvim", -- file browser
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
 
   {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}, -- tree syntax identifier
 
@@ -38,9 +41,12 @@ require("lazy").setup(plugins, opts)
 
 -- [[ telescope setup ]]
 -- https://github.com/nvim-telescope/telescope.nvim
-local builtin = require("telescope.builtin")
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) -- open telescope
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) -- open live-grep on files
+-- https://github.com/ryanoasis/nerd-fonts
+local builtin_ff = require("telescope.builtin")
+local builtin_fb = require("telescope").load_extension "file_browser"
+vim.keymap.set('n', '<leader>ff', builtin_ff.find_files, {}) -- open file search
+vim.keymap.set('n', '<leader>fg', builtin_ff.live_grep, {}) -- open live-grep on files
+vim.keymap.set('n', '<leader>fb', builtin_fb.file_browser, {}) -- open file browser
 
 -- [[ treesitter setup ]]
 -- https://github.com/nvim-treesitter/nvim-treesitter
