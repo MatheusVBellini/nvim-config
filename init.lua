@@ -28,29 +28,6 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ import plugins ]]
 require("lazy").setup("plugins")
 
--- [[ telescope setup ]]
--- https://github.com/nvim-telescope/telescope.nvim
--- https://github.com/ryanoasis/nerd-fonts
-local builtin_ff = require("telescope.builtin")
-local builtin_fb = require("telescope").load_extension "file_browser"
-vim.keymap.set('n', '<leader>ff', builtin_ff.find_files, {}) -- open file search
-vim.keymap.set('n', '<leader>fg', builtin_ff.live_grep, {}) -- open live-grep on files
-vim.keymap.set('n', '<leader>fb', builtin_fb.file_browser, {}) -- open file browser
-
--- [[ neotree setup ]]
-vim.keymap.set('n', '<leader>ft', ':Neotree filesystem toggle left<CR>', {})
-
--- [[ treesitter setup ]]
--- https://github.com/nvim-treesitter/nvim-treesitter
-local languages = {"lua", "vim", "python", "c", "cpp"}
-local configs = require("nvim-treesitter.configs")
-configs.setup({
-  ensure_installed = languages,
-  highlight = { enable = true },
-  indent = { enable = true },  
-})
-
-
 -- [[ general macros ]]
 vim.keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true }) -- save
 vim.keymap.set('n', '<leader>fq', ':q<CR>', { noremap = true, silent = true }) -- save and quit
