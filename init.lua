@@ -58,11 +58,20 @@ vim.keymap.set('n', '<leader>fq', ':q<CR>', { noremap = true, silent = true }) -
 vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, silent = true }) -- split window horizontally
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, silent = true }) -- split window vertically
 
-vim.api.nvim_set_keymap('n', '<leader>w<Right>', '<C-w>l', { noremap = true, silent = true }) -- move right
-vim.keymap.set('n', '<leader>w<Left>', '<C-w>h', { noremap = true, silent = true }) -- move left
-vim.keymap.set('n', '<leader>w<Up>', '<C-w>k', { noremap = true, silent = true }) -- move up
-vim.keymap.set('n', '<leader>w<Down>', '<C-w>j', { noremap = true, silent = true }) -- move down
+vim.api.nvim_set_keymap('n', '<leader>w<Right>', '<C-w>l', { noremap = true, silent = true }) -- move cursor right
+vim.keymap.set('n', '<leader>w<Left>', '<C-w>h', { noremap = true, silent = true }) -- move cursor left
+vim.keymap.set('n', '<leader>w<Up>', '<C-w>k', { noremap = true, silent = true }) -- move cursor up
+vim.keymap.set('n', '<leader>w<Down>', '<C-w>j', { noremap = true, silent = true }) -- move cursor down
 
+vim.api.nvim_set_keymap('n', '<leader>wh', '<C-W>H', { noremap = true, silent = true }) -- move window left
+vim.api.nvim_set_keymap('n', '<leader>wj', '<C-W>J', { noremap = true, silent = true }) -- move window down
+vim.api.nvim_set_keymap('n', '<leader>wk', '<C-W>K', { noremap = true, silent = true }) -- move window up
+vim.api.nvim_set_keymap('n', '<leader>wl', '<C-W>L', { noremap = true, silent = true }) -- move window right
+
+vim.api.nvim_set_keymap('n', '<leader>w=', ':resize +5<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>w-', ':resize -5<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>w]', ':vertical resize +5<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>w[', ':vertical resize -5<CR>', { noremap = true, silent = true })
 
 -- [[ colorscheme setup ]]
 vim.cmd.colorscheme "gruber-darker"
