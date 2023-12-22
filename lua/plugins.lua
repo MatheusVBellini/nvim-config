@@ -6,13 +6,6 @@ return {
   { "nvim-telescope/telescope-file-browser.nvim", -- file browser
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
 
-  { "nvim-neo-tree/neo-tree.nvim", -- file tree
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", 
-      "MunifTanjim/nui.nvim",
-    } },
 
   {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}, -- tree syntax identifier
 
