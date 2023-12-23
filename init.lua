@@ -7,8 +7,13 @@ vim.cmd("set shiftwidth=2");
 vim.g.mapleader = " " -- space is leader symbol
 vim.o.mouse = 'a' -- mouse reporting for all modes
 
-vim.opt.number = true        -- Enables line numbers
+vim.opt.number = true -- Enables line numbers
 vim.opt.relativenumber = true -- Sets line numbers to be relative
+
+vim.opt.ignorecase = true -- case insensitive ctrl+f
+vim.opt.smartcase = true -- case sensitive if uppercase
+vim.opt.hlsearch = true -- highlight when searching
+vim.opt.incsearch = true -- search while typing
 
 -- [[ lazy.nvim package manager ]]
 -- callable with :Lazy
@@ -24,8 +29,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
--- [[ import plugins ]]
 require("lazy").setup("plugins")
 
 -- [[ general macros ]]
@@ -45,10 +48,13 @@ vim.api.nvim_set_keymap('n', '<leader>wj', '<C-W>J', { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<leader>wk', '<C-W>K', { noremap = true, silent = true }) -- move window up
 vim.api.nvim_set_keymap('n', '<leader>wl', '<C-W>L', { noremap = true, silent = true }) -- move window right
 
-vim.api.nvim_set_keymap('n', '<leader>w=', ':resize +5<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>w-', ':resize -5<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>w]', ':vertical resize +5<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>w[', ':vertical resize -5<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>w=', ':resize +5<CR>', { noremap = true, silent = true }) -- increase window height
+vim.api.nvim_set_keymap('n', '<leader>w-', ':resize -5<CR>', { noremap = true, silent = true }) -- decrease window height
+vim.api.nvim_set_keymap('n', '<leader>w]', ':vertical resize +5<CR>', { noremap = true, silent = true }) -- increase window width
+vim.api.nvim_set_keymap('n', '<leader>w[', ':vertical resize -5<CR>', { noremap = true, silent = true }) -- decrease window width
+
+vim.api.nvim_set_keymap('n', '<leader>tf', '/', { noremap = true, silent = true }) -- search word
+vim.api.nvim_set_keymap('n', '<leader>th', ':noh<CR>', { noremap = true, silent = true }) -- unhighlight sought word
 
 -- [[ colorscheme setup ]]
 vim.cmd.colorscheme "gruber-darker"
