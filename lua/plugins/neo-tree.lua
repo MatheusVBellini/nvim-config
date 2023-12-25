@@ -9,7 +9,7 @@ return {
   },
 
   config = function ()
-    vim.keymap.set('n', '<leader>ft', ':Neotree filesystem toggle left<CR>', {})
+    vim.keymap.set('n', '<leader>ft', ':Neotree filesystem toggle left<CR>', {}) -- <ft -> file + tree>
   end
 
 }

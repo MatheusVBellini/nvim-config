@@ -16,11 +16,11 @@ vim.opt.hlsearch = true -- highlight when searching
 vim.opt.incsearch = true -- search while typing
 
 -- [[ macros ]]
-vim.keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true }) -- save
-vim.keymap.set('n', '<leader>fq', ':q<CR>', { noremap = true, silent = true }) -- save and quit
+vim.keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true }) -- save <fs -> file + save>
+vim.keymap.set('n', '<leader>fq', ':q<CR>', { noremap = true, silent = true }) -- save and quit <fq -> file + quit>
 
-vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, silent = true }) -- split window horizontally
-vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, silent = true }) -- split window vertically
+vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, silent = true }) -- split window horizontally <wh -> window + horizontal>
+vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, silent = true }) -- split window vertically <wv -> window + vertical>
 
 vim.api.nvim_set_keymap('n', '<leader>w<Right>', '<C-w>l', { noremap = true, silent = true }) -- move cursor right
 vim.keymap.set('n', '<leader>w<Left>', '<C-w>h', { noremap = true, silent = true }) -- move cursor left
@@ -37,6 +37,6 @@ vim.api.nvim_set_keymap('n', '<leader>w-', ':resize -5<CR>', { noremap = true, s
 vim.api.nvim_set_keymap('n', '<leader>w]', ':vertical resize +5<CR>', { noremap = true, silent = true }) -- increase window width
 vim.api.nvim_set_keymap('n', '<leader>w[', ':vertical resize -5<CR>', { noremap = true, silent = true }) -- decrease window width
 
-vim.api.nvim_set_keymap('n', '<leader>tf', '/', { noremap = true, silent = true }) -- search word
-vim.api.nvim_set_keymap('n', '<leader>th', ':noh<CR>', { noremap = true, silent = true }) -- unhighlight sought word
+vim.api.nvim_set_keymap('n', '<leader>tf', '/', { noremap = true, silent = true }) -- search word <tf -> text + find>
+vim.api.nvim_set_keymap('n', '<leader>th', ':noh<CR>', { noremap = true, silent = true }) -- unhighlight sought word <th -> text + highlight>
 
