@@ -1,4 +1,4 @@
 -- gruber-darker colorstheme
-return { 
-  "blazkowolf/gruber-darker.nvim" 
-} 
+return {
+  "blazkowolf/gruber-darker.nvim"
+}
