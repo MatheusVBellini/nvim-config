@@ -37,6 +37,7 @@ return {
       vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, {}) -- show code implementation  <ci -> code + implementation>
       vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, {}) -- show code definition <cd -> code + definition>
       vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {}) -- rename token <cr -> code + rename>
+      vim.keymap.set('n', '<leader>cf', vim.lsp.buf.references, {}) -- find token references <cf -> code + find>
 
     end
   },
