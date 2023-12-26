@@ -33,8 +33,11 @@ return {
       lspconfig.jedi_language_server.setup({})
 
       -- special keybindings
-      vim.keymap.set('n', '<leader>cd', vim.lsp.buf.hover, {}) -- show code documentation <cd -> code + documentation>
-      vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, {}) -- show code  <ci -> code + implementation>
+      vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, {}) -- show code documentation <ch -> code + hover>
+      vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, {}) -- show code implementation  <ci -> code + implementation>
+      vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, {}) -- show code definition <cd -> code + definition>
+      vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {}) -- rename token <cr -> code + rename>
+
     end
   },
 
