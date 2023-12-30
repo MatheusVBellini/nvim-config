@@ -19,7 +19,7 @@ vim.opt.incsearch = true -- search while typing
 vim.keymap.set('n', '<leader>fs', ':w<CR>', { noremap = true, silent = true }) -- save <fs -> file + save>
 vim.keymap.set('n', '<leader>fq', ':q<CR>', { noremap = true, silent = true }) -- save and quit <fq -> file + quit>
 
-vim.keymap.set('n', '<leader>wh', ':split<CR>', { noremap = true, silent = true }) -- split window horizontally <wh -> window + horizontal>
+vim.keymap.set('n', '<leader>ws', ':split<CR>', { noremap = true, silent = true }) -- split window horizontally <ws -> window + split>
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { noremap = true, silent = true }) -- split window vertically <wv -> window + vertical>
 
 vim.api.nvim_set_keymap('n', '<leader>w<Right>', '<C-w>l', { noremap = true, silent = true }) -- move cursor right
