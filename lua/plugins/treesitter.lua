@@ -1,5 +1,5 @@
 -- languages for which to acquire syntax identifier
-local languages = {"lua", "vim", "python", "c", "cpp"}
+local languages = {"lua", "vim", "python", "c", "cpp", "javascript", "typescript"}
 
 -- tree syntax identifier
 return {

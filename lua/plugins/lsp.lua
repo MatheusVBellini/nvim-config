@@ -1,5 +1,5 @@
 -- language servers
-local servers = {"bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman",  "jedi_language_server"}
+local servers = {"bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman",  "jedi_language_server", "tsserver"}
 
 return {
   { -- [[ language server fetcher ]]
