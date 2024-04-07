@@ -1,28 +1,46 @@
 -- language servers
-local servers = {"bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman",  "jedi_language_server", "tsserver"}
+local servers =
+{ "bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman", "jedi_language_server", "tsserver" }
+local formatters = { "stylua" }
+
+local format_and_lint = {}
+for i = 1, #formatters do
+  table.insert(format_and_lint, formatters[i])
+end
 
 return {
   { -- [[ language server fetcher ]]
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
-    end
+    end,
   },
 
   { -- [[ language server fetching ]]
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = servers
+        ensure_installed = servers,
       })
-    end
+    end,
+  },
+
+  { -- [[ language formatters and linters fetching ]]
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = format_and_lint,
+        auto_update = true,
+        run_on_start = true,
+      })
+    end,
   },
 
   { -- [[ auto-completion ]]
     "hrsh7th/nvim-cmp",
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
-      "L3MON4D3/LuaSnip"
+      "L3MON4D3/LuaSnip",
     },
     config = function()
       local luasnip = require("luasnip")
@@ -34,15 +52,15 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-          ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+          ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- Up
+          ["<C-d>"] = cmp.mapping.scroll_docs(4), -- Down
           -- C-b (back) C-f (forward) for snippet placeholder navigation.
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm {
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-          },
-          ['<Tab>'] = cmp.mapping(function(fallback)
+          }),
+          ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -50,8 +68,8 @@ return {
             else
               fallback()
             end
-          end, { 'i', 's' }),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -59,14 +77,14 @@ return {
             else
               fallback()
             end
-          end, { 'i', 's' }),
+          end, { "i", "s" }),
         }),
         sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
         },
       })
-    end
+    end,
   },
 
   { -- [[ language server activation ]]
@@ -82,14 +100,36 @@ return {
       end
 
       -- special keybindings
-      vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, {}) -- show code documentation <ch -> code + hover>
-      vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, {}) -- show code implementation  <ci -> code + implementation>
-      vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, {}) -- show code definition <cd -> code + definition>
-      vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, {}) -- rename token <cr -> code + rename>
-      vim.keymap.set('n', '<leader>cf', vim.lsp.buf.references, {}) -- find token references <cf -> code + find>
-      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {}) -- open code actions menu <ca -> code + action>
-
-    end
+      vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, {})       -- show code documentation <ch -> code + hover>
+      vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, {}) -- show code implementation  <ci -> code + implementation>
+      vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition, {})  -- show code definition <cd -> code + definition>
+      vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {})      -- rename token <cr -> code + rename>
+      vim.keymap.set("n", "<leader>cf", vim.lsp.buf.references, {})  -- find token references <cf -> code + find>
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {}) -- open code actions menu <ca -> code + action>
+    end,
   },
 
+  { -- [[ Linting and Formating ]]
+
+    "nvimtools/none-ls.nvim",
+    config = function()
+      local null_ls = require("null-ls")
+
+      local sources = {}
+      for _, formatter in ipairs(formatters) do
+        if null_ls.builtins.formatting[formatter] then
+          table.insert(sources, null_ls.builtins.formatting[formatter])
+        else
+          print("Formatter not found: " .. formatter)
+        end
+      end
+
+      null_ls.setup({
+        sources = sources,
+      })
+
+      -- special keybindings
+      vim.keymap.set("n", "<leader>format", vim.lsp.buf.format, {}) -- format code <format>
+    end,
+  },
 }
