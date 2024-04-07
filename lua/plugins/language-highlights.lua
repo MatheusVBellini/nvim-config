@@ -1,6 +1,3 @@
--- languages for which to acquire syntax identifier
-local languages = {"lua", "vim", "python", "c", "cpp", "javascript", "typescript"}
-
 -- tree syntax identifier
 return {
   "nvim-treesitter/nvim-treesitter",
@@ -9,7 +6,7 @@ return {
   config = function()
     local configs = require("nvim-treesitter.configs")
     configs.setup({
-      ensure_installed = languages,
+      auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
     })
