@@ -124,7 +124,7 @@ return {
 		end,
 	},
 
-	{ -- [[ Linting and Formating ]]
+	{ -- [[ Linting and Formatting ]]
 
 		"nvimtools/none-ls.nvim",
 		config = function()
