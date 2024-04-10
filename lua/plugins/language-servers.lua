@@ -3,7 +3,7 @@ local servers =
 local formatters = { "stylua", "prettier", "black" }
 local linters = { "pylint", "actionlint", "checkstyle" }
 local formatters_null_ls = { "clang_format", "cmake_format" }
-local linterts_null_ls = { "cppcheck", "clazy", "cmake_lint", "gccdiag" }
+local linterts_null_ls = { "clazy", "cmake_lint" }
 local formatters_mason = { "clang-format" }
 local linters_mason = { "eslint_d" }
 
