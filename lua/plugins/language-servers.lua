@@ -23,6 +23,7 @@ end
 
 return {
 	{ -- [[ language server fetcher ]]
+    -- callable with :Mason
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
@@ -93,7 +94,7 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-				}),
+				}), 
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
