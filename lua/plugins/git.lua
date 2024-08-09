@@ -3,11 +3,11 @@ return {
 		"tpope/vim-fugitive",
     config = function()
       vim.keymap.set("n", "<leader>gs", ":Git<CR>", {}) -- git status <gs -> git + status>
-      vim.keymap.set("n", "<leader>gc", ":Git commit ", {}) -- git commit <gc -> git + commit>
+      vim.keymap.set("n", "<leader>gc", ":Git commit -m ", {}) -- git commit <gc -> git + commit>
       vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", {}) -- git blame <gb -> git + blame>
       vim.keymap.set("n", "<leader>gl", ":Git log<CR>", {}) -- git log <gl -> git + log>
-      vim.keymap.set("n", "<leader>gP", ":Git push<CR>", {}) -- git push <gp -> git + push>
-      vim.keymap.set("n", "<leader>gp", ":Git pull<CR>", {}) -- git pull <gP -> git + pull>
+      vim.keymap.set("n", "<leader>gP", ":Git push<CR>", {}) -- git push <gP -> git + push>
+      vim.keymap.set("n", "<leader>gp", ":Git pull<CR>", {}) -- git pull <gp -> git + pull>
       vim.keymap.set("n", "<leader>ga", ":Git add .<CR>", {}) -- git add <ga -> git + add>
     end,
 	},
