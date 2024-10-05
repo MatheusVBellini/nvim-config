@@ -1,4 +1,5 @@
 return {
-  -- callable with :Copilot
-  "github/copilot.vim",
+	-- callable with :Copilot
+	"github/copilot.vim",
+	lazy = true,
 }
