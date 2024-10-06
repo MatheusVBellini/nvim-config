@@ -1,5 +1,4 @@
-local servers =
-	{ "bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman", "jedi_language_server", "tsserver" }
+local servers = { "bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman", "jedi_language_server" }
 local formatters = { "stylua", "prettier", "black" }
 local linters = { "pylint", "actionlint", "checkstyle" }
 local formatters_null_ls = { "clang_format", "cmake_format" }
@@ -23,7 +22,7 @@ end
 
 return {
 	{ -- [[ language server fetcher ]]
-    -- callable with :Mason
+		-- callable with :Mason
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
@@ -94,7 +93,7 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-				}), 
+				}),
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
