@@ -17,4 +17,4 @@ require("vim-config")
 require("lazy").setup("plugins")
 
 -- [[ colorscheme ]]
-vim.cmd.colorscheme "ayu-dark"
+vim.cmd.colorscheme "gruber-darker"
