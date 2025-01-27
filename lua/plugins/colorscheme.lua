@@ -7,6 +7,10 @@ return {
 		"blazkowolf/gruber-darker.nvim",
 	},
 
+  {
+    "fcpg/vim-farout",
+  },
+
 	{
 		"folke/tokyonight.nvim",
 		opts = {
