@@ -1,4 +1,4 @@
-local servers = { "bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman", "jedi_language_server" }
+local servers = { "bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman", "jedi_language_server", "svlangserver", "rust-analyzer" }
 local formatters = { "stylua", "prettier", "black" }
 local linters = { "actionlint", "checkstyle" }
 local formatters_null_ls = { "clang_format", "cmake_format" }
