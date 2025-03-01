@@ -35,6 +35,30 @@ return {
 	},
 
 	{
+	  "Mofiqul/dracula.nvim",
+		name = "dracula",
+		opts = {
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+		},
+	},
+
+	{
+	  "rose-pine/neovim",
+		name = "rose-pine",
+		opts = {
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+		},
+	},
+
+	{
 		"Shatur/neovim-ayu",
 
 		config = function()

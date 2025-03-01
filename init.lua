@@ -17,4 +17,4 @@ require("vim-config")
 require("lazy").setup("plugins")
 
 -- [[ colorscheme ]]
-vim.cmd.colorscheme "farout"
+vim.cmd.colorscheme "rose-pine-main"
