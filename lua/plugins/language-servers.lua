@@ -1,9 +1,9 @@
 local servers = { "bashls", "clangd", "cmake", "jsonls", "jdtls", "lua_ls", "marksman", "jedi_language_server", "svlangserver", "rust_analyzer", "matlab_ls", "nil_ls" }
-local formatters = { "stylua", "prettier", "black", "nixpkgs-fmt" }
+local formatters = { "stylua", "prettier", "black" }
 local linters = { "actionlint", "checkstyle" }
 local formatters_null_ls = { "clang_format", "cmake_format" }
 local linterts_null_ls = { "clazy", "cmake_lint" }
-local formatters_mason = { "clang-format" }
+local formatters_mason = { "clang-format", "nixpkgs-fmt" }
 local linters_mason = { "eslint_d" }
 
 local format_and_lint = {}
